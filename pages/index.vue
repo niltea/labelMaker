@@ -44,6 +44,7 @@ circle List
   }
   @media print {
     page-break-after: always;
+    padding: 20mm 19mm 0;
   }
 }
 </style>

@@ -1,4 +1,5 @@
 const listURL = `//${location.host}/list.csv`;
+const perPage = 10;
 
 // 引用符を除去する
 const stripQuote = item => item.replace(/^['"]|['"]$/g, '');
@@ -99,8 +100,21 @@ export const mutations = {
     state.allData = allData;
   },
   addCircleList (state, circles) {
+    let prefixCount = 0;
+    let prefixIndex = 0;
+    let prevPrefix = '';
     circles.forEach((circle) => {
-      const prefix = circle.space_sym;
+      prefixCount += 1;
+      if (prevPrefix !== '' && prevPrefix !== circle.space_sym) {
+        prefixIndex = 0;
+        prefixCount = 1;
+      }
+      prevPrefix = circle.space_sym;
+      if (prefixCount > perPage) {
+        prefixCount = 1;
+        prefixIndex += 1;
+      }
+      const prefix = circle.space_sym + prefixIndex.toString();
       if (!state.circleList[prefix]) {
         state.circleList[prefix] = [];
       }

@@ -12,6 +12,7 @@ body {
   background-color: white;
   width: 100%;
   box-sizing: border-box;
+  -webkit-print-color-adjust: exact;
   @media screen {
     width: 1050px;
     padding: 106px 93px;
@@ -19,7 +20,6 @@ body {
   }
   @media print {
     width: 210mm;
-    padding: 21.2mm 18.6mm;
   }
 }
 .wrapper {
@@ -30,7 +30,6 @@ body {
     width: 864px;
   }
   @media print {
-    width: 172.8mm;
   }
 }
 </style>
